@@ -117,7 +117,7 @@ that turns a nice landing page into a shippable EU product:
 > The legal pages are structured starting points, **not legal advice** — fill in
 > every placeholder and have a qualified lawyer review before you publish.
 
-**Get the full kit → https://haierr1.github.io/ (full kit launching soon — watch this repo)**
+**Get the full kit → https://buy.polar.sh/polar_cl_PSs3rzNIlIv4BV02wO6XDocUC8CMdgEL1nybr4761v6**
 
 ---
 
@@ -133,4 +133,4 @@ See [CHANGELOG.md](./CHANGELOG.md).
 ---
 
 _Free edition. The EU-compliance layer (GDPR legal pages + cookie consent) ships
-in the paid **EU-Ready SaaS Landing Kit** → https://haierr1.github.io/ (full kit launching soon — watch this repo)._
+in the paid **EU-Ready SaaS Landing Kit** → https://buy.polar.sh/polar_cl_PSs3rzNIlIv4BV02wO6XDocUC8CMdgEL1nybr4761v6._
