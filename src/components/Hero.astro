@@ -1,0 +1,62 @@
+---
+import { hero } from '../config/content';
+---
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_srgb,var(--color-brand)_14%,transparent),transparent)]"></div>
+  <div class="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28">
+    <p class="inline-flex items-center rounded-full border border-slate-200 bg-white/60 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-300">
+      {hero.eyebrow}
+    </p>
+    <h1
+      class="mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl dark:text-white"
+      style="font-family: var(--font-display)"
+    >
+      {hero.title}
+    </h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-600 dark:text-slate-300">{hero.subtitle}</p>
+
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href={hero.primaryCta.href} class="w-full rounded-md bg-brand px-6 py-3 text-sm font-semibold text-[color:var(--color-brand-fg)] transition hover:bg-brand-hover sm:w-auto">
+        {hero.primaryCta.label}
+      </a>
+      <a href={hero.secondaryCta.href} class="w-full rounded-md border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 sm:w-auto dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
+        {hero.secondaryCta.label}
+      </a>
+    </div>
+    <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">{hero.note}</p>
+
+    {/* Faux product screenshot — pure CSS/markup, screenshots well, no assets. */}
+    <div class="mx-auto mt-16 max-w-3xl">
+      <div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+        <div class="flex items-center gap-1.5 border-b border-slate-100 px-4 py-3 dark:border-slate-800">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+          <span class="ml-3 text-xs text-slate-400">Weekly Report — Monday</span>
+        </div>
+        <div class="space-y-4 p-6 text-left">
+          <div class="flex items-baseline justify-between">
+            <p class="text-sm font-semibold text-slate-900 dark:text-white">Activation is up 12% this week</p>
+            <span class="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/40 dark:text-green-300">+12%</span>
+          </div>
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            Most of the lift came from users who connected a data source in their first session.
+            Trial-to-paid held steady at 24%.
+          </p>
+          <div class="grid grid-cols-3 gap-3 pt-2">
+            {[
+              { k: 'Signups', v: '1,204' },
+              { k: 'Activated', v: '68%' },
+              { k: 'Churn', v: '2.1%' },
+            ].map((s) => (
+              <div class="rounded-lg bg-slate-50 p-3 dark:bg-slate-800/60">
+                <p class="text-xs text-slate-500 dark:text-slate-400">{s.k}</p>
+                <p class="mt-1 text-lg font-semibold text-slate-900 dark:text-white">{s.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

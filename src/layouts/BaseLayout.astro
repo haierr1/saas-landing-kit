@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import { site } from '../config/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} — ${site.tagline}`;
+const metaDescription = description ?? site.description;
+const b = site.brand;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {/* Brand tokens from src/config/site.ts override the CSS defaults. */}
+    <style is:global define:vars={{
+      brand: b.primary,
+      brandHover: b.primaryHover,
+      brandFg: b.primaryFg,
+      fontSans: b.fontSans,
+      fontDisplay: b.fontDisplay,
+    }}>
+      :root {
+        --color-brand: var(--brand);
+        --color-brand-hover: var(--brandHover);
+        --color-brand-fg: var(--brandFg);
+        --font-sans: var(--fontSans);
+        --font-display: var(--fontDisplay);
+      }
+    </style>
+
+    {/* No-flash theme init: apply saved/system theme before first paint. */}
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-200">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand focus:px-4 focus:py-2 focus:text-[color:var(--color-brand-fg)]"
+    >
+      Skip to content
+    </a>
+
+    <Header />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+
+/* Toggle dark mode by adding `.dark` to <html> (done in BaseLayout's inline script). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Brand tokens. These are DEFAULTS — BaseLayout.astro overrides them at runtime
+ * from src/config/site.ts, so editing the config recolours the whole site.
+ * Every `bg-brand` / `text-brand` / `font-sans` utility resolves to these vars.
+ */
+@theme {
+  --color-brand: #4f46e5;
+  --color-brand-hover: #4338ca;
+  --color-brand-fg: #ffffff;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-sans);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible, consistent focus ring for keyboard users everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Respect users who ask for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/*
+ * `.prose-legal` — lightweight readable typography for legal + blog pages.
+ * Kept hand-rolled to avoid pulling in @tailwindcss/typography as a dependency.
+ */
+@layer components {
+  .prose-legal {
+    max-width: 42rem;
+    line-height: 1.7;
+  }
+  .prose-legal h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    scroll-margin-top: 6rem;
+  }
+  .prose-legal h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-legal p,
+  .prose-legal ul,
+  .prose-legal ol {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-legal ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+  .prose-legal ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+  }
+  .prose-legal li {
+    margin-top: 0.25rem;
+  }
+  .prose-legal a {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-legal strong {
+    font-weight: 600;
+  }
+
+  /* Unfilled [PLACEHOLDER …] markers in legal pages render in alarming red. */
+  .placeholder-mark {
+    color: #dc2626;
+    background: #fef2f2;
+    padding: 0.05em 0.35em;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 0.9em;
+  }
+  :where(.dark) .placeholder-mark {
+    color: #fca5a5;
+    background: rgba(220, 38, 38, 0.12);
+  }
+}

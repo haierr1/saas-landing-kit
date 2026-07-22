@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+---
+<!--
+  ────────────────────────────────────────────────────────────────────────
+  This is the FREE teaser edition of the EU-Ready SaaS Landing Kit.
+  It ships the landing page + 404 only.
+
+  The paid kit adds the EU-compliance layer this free version leaves out:
+  a pricing page, a Markdown blog, GDPR privacy/terms/cookie-policy/imprint
+  skeletons, and a working cookie-consent banner that gates scripts until
+  the visitor opts in.
+
+  Upgrade → [GUMROAD-LINK]
+  ────────────────────────────────────────────────────────────────────────
+-->
+<BaseLayout>
+  <Hero />
+  <Features />
+  <Testimonials />
+  <FAQ />
+  <CTA />
+</BaseLayout>

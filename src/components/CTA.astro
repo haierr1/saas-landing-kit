@@ -1,0 +1,22 @@
+---
+import { cta } from '../config/content';
+---
+<section class="py-20">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6">
+    <div class="relative overflow-hidden rounded-3xl bg-brand px-6 py-16 text-center sm:px-12">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_80%_at_80%_20%,rgba(255,255,255,0.18),transparent)]"></div>
+      <h2 class="relative text-3xl font-bold tracking-tight text-[color:var(--color-brand-fg)] sm:text-4xl" style="font-family: var(--font-display)">
+        {cta.title}
+      </h2>
+      <p class="relative mx-auto mt-4 max-w-xl text-[color:color-mix(in_srgb,var(--color-brand-fg)_85%,transparent)]">{cta.subtitle}</p>
+      <div class="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={cta.primary.href} class="w-full rounded-md bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100 sm:w-auto">
+          {cta.primary.label}
+        </a>
+        <a href={cta.secondary.href} class="w-full rounded-md border border-white/40 px-6 py-3 text-sm font-semibold text-[color:var(--color-brand-fg)] transition hover:bg-white/10 sm:w-auto">
+          {cta.secondary.label}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

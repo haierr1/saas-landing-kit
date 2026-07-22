@@ -1,0 +1,17 @@
+---
+import { site } from '../config/site';
+---
+<a href="/" class="inline-flex items-center gap-2 font-semibold text-slate-900 dark:text-white" aria-label={`${site.name} home`}>
+  {site.logoImage ? (
+    <img src={site.logoImage} alt={site.name} class="h-7 w-auto" />
+  ) : (
+    <>
+      <span class="grid h-7 w-7 place-items-center rounded-lg bg-brand text-[color:var(--color-brand-fg)]" aria-hidden="true">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 18 10 8l4 6 6-10" />
+        </svg>
+      </span>
+      <span class="text-lg" style={`font-family: var(--font-display)`}>{site.name}</span>
+    </>
+  )}
+</a>
